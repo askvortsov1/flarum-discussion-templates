@@ -29,7 +29,9 @@ function insertTemplate() {
   }
 
   if (Object.keys(templateCandidates).length === 1) {
-    app.composer.component.editor.value(Object.values(templateCandidates)[0]);
+    const template = Object.values(templateCandidates)[0];
+    app.composer.component.content(template);
+    app.composer.component.editor.value(template);
   }
 }
 
