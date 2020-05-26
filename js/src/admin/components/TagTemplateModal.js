@@ -35,7 +35,9 @@ export default class TagTemplateModal extends Modal {
             loading={this.loading}
             disabled={!this.changed()}
           >
-            {app.translator.trans("askvortsov-discussion-templates.admin.tag_template_modal.submit_button")}
+            {app.translator.trans(
+              "askvortsov-discussion-templates.admin.tag_template_modal.submit_button"
+            )}
           </Button>
         </div>
       </div>,
