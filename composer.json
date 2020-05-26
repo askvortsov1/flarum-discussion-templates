@@ -1,6 +1,6 @@
 {
   "name": "askvortsov/flarum-discussion-templates",
-  "description": "Create templates for new discussions in your tags",
+  "description": "Create per-tag templates for new discussions.",
   "keywords": [
     "flarum"
   ],
