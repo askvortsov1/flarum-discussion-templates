@@ -1,0 +1,37 @@
+{
+  "name": "askvortsov/flarum-discussion-templates",
+  "description": "Create templates for new discussions in your tags",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^0.1.0-beta.8"
+  },
+  "authors": [
+    {
+      "name": "Alexander Skvortsov",
+      "email": "sasha.skvortsov109@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Askvortsov\\FlarumDiscussionTemplates\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Flarum Discussion Templates",
+      "icon": {
+        "name": "",
+        "backgroundColor": "",
+        "color": ""
+      }
+    },
+    "flagrow": {
+      "discuss": ""
+    }
+  }
+}
