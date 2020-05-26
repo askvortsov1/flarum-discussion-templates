@@ -24,7 +24,7 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
             )}
           </div>
           {Button.component({
-            className: "Button",
+            className: "Button Button--primary",
             children: app.translator.trans(
               "askvortsov-discussion-templates.admin.tags.tag_template_button"
             ),
