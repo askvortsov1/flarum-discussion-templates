@@ -24,3 +24,4 @@ composer update askvortsov/flarum-discussion-templates
 
 - [Packagist](https://packagist.org/packages/askvortsov/flarum-discussion-templates)
 - [Github](https://github.com/askvortsov1/flarum-discussion-templates)
+- [Discuss](https://discuss.flarum.org/d/23950-discussion-templates-per-tag)
