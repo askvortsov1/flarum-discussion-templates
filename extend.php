@@ -12,6 +12,7 @@
 namespace Askvortsov\FlarumDiscussionTemplates;
 
 use Flarum\Extend;
+use Illuminate\Contracts\Events\Dispatcher;
 
 return [
     (new Extend\Frontend('forum'))
@@ -20,5 +21,13 @@ return [
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js')
         ->css(__DIR__.'/resources/less/admin.less'),
-    new Extend\Locales(__DIR__ . '/resources/locale')
+    new Extend\Locales(__DIR__ . '/resources/locale'),
+
+
+    (new Extend\Routes('api'))
+        ->patch('/tags/{id}/template', 'tags.updateTemplate', Controller\UpdateTagTemplateController::class),
+
+    function (Dispatcher $events) {
+        $events->subscribe(Listener\AddTemplateToTagSerializer::class);
+    },
 ];
