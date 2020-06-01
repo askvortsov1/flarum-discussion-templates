@@ -46,7 +46,7 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
   });
 
   extend(TagDiscussionModal.prototype, "onhide", function () {
-    if (app.composer.component.tags.length > 0) {
+    if (app.composer.component && app.composer.component.tags.length > 0) {
       insertTemplate();
     }
   });
