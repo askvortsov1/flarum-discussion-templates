@@ -16,9 +16,9 @@ use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\Tags\Api\Serializer\TagSerializer;
 use Flarum\Tags\Tag;
 use Flarum\User\AssertPermissionTrait;
+use Illuminate\Support\Arr;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
-use Illuminate\Support\Arr;
 
 class UpdateTagTemplateController extends AbstractShowController
 {
