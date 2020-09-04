@@ -23,14 +23,16 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
               "askvortsov-discussion-templates.admin.tags.tag_template_text"
             )}
           </div>
-          {Button.component({
-            className: "Button Button--primary",
-            children: app.translator.trans(
+          <Button
+            className="Button Button--primary"
+            onclick={() => {
+              app.modal.show(TagTemplateModal, { model: this.tag });
+            }}
+          >
+            {app.translator.trans(
               "askvortsov-discussion-templates.admin.tags.tag_template_button"
-            ),
-            onclick: () =>
-              app.modal.show(new TagTemplateModal({ tag: this.tag })),
-          })}
+            )}
+          </Button>
         </fieldset>,
         -20
       );

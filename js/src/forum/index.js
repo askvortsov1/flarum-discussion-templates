@@ -5,11 +5,11 @@ import Tag from "flarum/tags/models/Tag";
 import TagDiscussionModal from "flarum/tags/components/TagDiscussionModal";
 
 function insertTemplate() {
-  if (app.composer.component.content()) return;
+  if (app.composer.fields.content() || !app.composer.fields.tags) return;
 
   const templateCandidates = {};
 
-  app.composer.component.tags.forEach(function (tag) {
+  app.composer.fields.tags.forEach(function (tag) {
     if (tag.position() === null || !tag.template()) return;
 
     templateCandidates[tag.id()] = tag.template();
@@ -30,7 +30,7 @@ function insertTemplate() {
 
   if (Object.keys(templateCandidates).length === 1) {
     const template = Object.values(templateCandidates)[0];
-    app.composer.component.editor.value(template);
+    app.composer.editor.setValue(template);
   }
 }
 
@@ -38,15 +38,15 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
   Tag.prototype.template = Model.attribute("template");
 
   extend(IndexPage.prototype, "newDiscussionAction", function (promise) {
-    promise.then((component) => {
-      if (component.tags.length > 0) {
+    promise.then((composer) => {
+      if (composer.fields.tags.length > 0) {
         insertTemplate();
       }
     });
   });
 
-  extend(TagDiscussionModal.prototype, "onhide", function () {
-    if (app.composer.component && app.composer.component.tags.length > 0) {
+  extend(TagDiscussionModal.prototype, "onremove", function () {
+    if (app.composer.fields.tags && app.composer.fields.tags.length > 0) {
       insertTemplate();
     }
   });
