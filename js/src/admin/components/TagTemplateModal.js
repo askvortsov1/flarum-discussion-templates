@@ -2,10 +2,10 @@ import Button from "flarum/components/Button";
 import Modal from "flarum/components/Modal";
 
 export default class TagTemplateModal extends Modal {
-  init() {
-    super.init();
+  oninit(vnode) {
+    super.oninit(vnode);
 
-    this.template = m.prop(this.props.tag.template());
+    this.template = m.stream(this.attrs.model.template());
   }
   className() {
     return "TagTemplateModal Modal--large";
@@ -45,13 +45,13 @@ export default class TagTemplateModal extends Modal {
   }
 
   changed() {
-    return this.template() !== this.props.tag.template();
+    return this.template() !== this.attrs.model.template();
   }
 
   onsubmit(e) {
     e.preventDefault();
 
-    const tag = this.props.tag;
+    const tag = this.attrs.model;
     const template = this.template();
 
     this.loading = true;
@@ -60,7 +60,7 @@ export default class TagTemplateModal extends Modal {
       .request({
         method: "PATCH",
         url: app.forum.attribute("apiUrl") + "/tags/" + tag.id() + "/template",
-        data: { data: { template } },
+        body: { data: { template } },
       })
       .then(function () {
         tag.data.attributes.template = template;

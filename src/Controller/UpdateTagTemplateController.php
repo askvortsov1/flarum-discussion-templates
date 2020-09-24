@@ -16,6 +16,7 @@ use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\Tags\Api\Serializer\TagSerializer;
 use Flarum\Tags\Tag;
 use Flarum\User\AssertPermissionTrait;
+use Illuminate\Support\Arr;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
@@ -47,8 +48,8 @@ class UpdateTagTemplateController extends AbstractShowController
     public function data(ServerRequestInterface $request, Document $document)
     {
         $this->assertAdmin($request->getAttribute('actor'));
-        $id = array_get($request->getQueryParams(), 'id');
-        $data = array_get($request->getParsedBody(), 'data', []);
+        $id = Arr::get($request->getQueryParams(), 'id');
+        $data = Arr::get($request->getParsedBody(), 'data', []);
 
         $tag = Tag::findOrFail($id);
 
