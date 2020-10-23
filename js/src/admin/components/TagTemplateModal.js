@@ -1,11 +1,12 @@
 import Button from "flarum/components/Button";
 import Modal from "flarum/components/Modal";
+import Stream from "flarum/utils/Stream";
 
 export default class TagTemplateModal extends Modal {
   oninit(vnode) {
     super.oninit(vnode);
 
-    this.template = m.stream(this.attrs.model.template());
+    this.template = Stream(this.attrs.model.template());
   }
   className() {
     return "TagTemplateModal Modal--large";
