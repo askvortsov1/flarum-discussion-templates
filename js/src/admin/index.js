@@ -38,4 +38,29 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
       );
     }
   });
+
+  app.extensionData
+    .for("askvortsov-discussion-templates")
+    .registerPermission(
+      {
+        icon: "fas fa-reply",
+        label: app.translator.trans(
+          "askvortsov-discussion-templates.admin.permissions.manage_own_discussion_reply_templates"
+        ),
+        permission: "discussion.manageOwnDiscussionReplyTemplates",
+      },
+      "start",
+      3
+    )
+    .registerPermission(
+      {
+        icon: "fas fa-reply",
+        label: app.translator.trans(
+          "askvortsov-discussion-templates.admin.permissions.manage_all_reply_templates"
+        ),
+        permission: "discussion.manageAllReplyTemplates",
+      },
+      "moderate",
+      3
+    );
 });
