@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of askvortsov/flarum-moderator-warnings
+ * This file is part of askvortsov/flarum-discussion-templates
  *
  *  Copyright (c) 2020 Alexander Skvortsov.
  *
@@ -14,5 +14,5 @@ use Flarum\Group\Group;
 
 return Migration::addPermissions([
     'discussion.manageOwnDiscussionReplyTemplates' => Group::MEMBER_ID,
-    'discussion.manageAllReplyTemplates' => Group::MODERATOR_ID,
+    'discussion.manageAllReplyTemplates'           => Group::MODERATOR_ID,
 ]);

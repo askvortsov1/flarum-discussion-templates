@@ -1,10 +1,12 @@
 <?php
 
 /*
- * This file is part of Flarum.
+ * This file is part of askvortsov/flarum-discussion-templates
  *
- * For detailed copyright and license information, please view the
- * LICENSE file that was distributed with this source code.
+ *  Copyright (c) 2020 Alexander Skvortsov.
+ *
+ *  For detailed copyright and license information, please view the
+ *  LICENSE file that was distributed with this source code.
  */
 
 namespace Askvortsov\FlarumDiscussionTemplates\Access;
@@ -16,9 +18,10 @@ use Flarum\User\User;
 class DiscussionPolicy extends AbstractPolicy
 {
     /**
-     * @param User $actor
-     * @param string $ability
+     * @param User       $actor
+     * @param string     $ability
      * @param Discussion $discussion
+     *
      * @return bool
      */
     public function manageReplyTemplates(User $actor, Discussion $discussion)

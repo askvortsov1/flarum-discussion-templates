@@ -21,14 +21,14 @@ use Flarum\Tags\Api\Serializer\TagSerializer;
 
 return [
     (new Extend\Frontend('forum'))
-        ->js(__DIR__ . '/js/dist/forum.js')
-        ->css(__DIR__ . '/resources/less/forum.less'),
+        ->js(__DIR__.'/js/dist/forum.js')
+        ->css(__DIR__.'/resources/less/forum.less'),
 
     (new Extend\Frontend('admin'))
-        ->js(__DIR__ . '/js/dist/admin.js')
-        ->css(__DIR__ . '/resources/less/admin.less'),
+        ->js(__DIR__.'/js/dist/admin.js')
+        ->css(__DIR__.'/resources/less/admin.less'),
 
-    new Extend\Locales(__DIR__ . '/resources/locale'),
+    new Extend\Locales(__DIR__.'/resources/locale'),
 
     (new Extend\Routes('api'))
         ->patch('/tags/{id}/template', 'tags.updateTemplate', Controller\UpdateTagTemplateController::class),
@@ -50,5 +50,5 @@ return [
         ->modelPolicy(Discussion::class, DiscussionPolicy::class),
 
     (new Extend\Event())
-        ->listen(Saving::class, SaveReplyTemplateToDatabase::class)
+        ->listen(Saving::class, SaveReplyTemplateToDatabase::class),
 ];
