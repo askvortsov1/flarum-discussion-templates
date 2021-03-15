@@ -41,6 +41,13 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
 
   app.extensionData
     .for("askvortsov-discussion-templates")
+    .registerSetting({
+      setting: "appendTemplateOnTagChange",
+      label: app.translator.trans(
+        "askvortsov-discussion-templates.admin.settings.append_template_on_tag_change"
+      ),
+      type: "boolean",
+    })
     .registerPermission(
       {
         icon: "fas fa-reply",
