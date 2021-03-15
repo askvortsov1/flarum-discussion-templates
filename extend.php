@@ -53,7 +53,5 @@ return [
         ->listen(Saving::class, SaveReplyTemplateToDatabase::class),
 
     (new Extend\Settings())
-        ->serializeToForum('appendTemplateOnTagChange', 'appendTemplateOnTagChange', function ($value) {
-            return boolval($value);
-        }),
+        ->serializeToForum('appendTemplateOnTagChange', 'appendTemplateOnTagChange', 'boolval'),
 ];
