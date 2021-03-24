@@ -7,10 +7,8 @@ import TagDiscussionModal from "flarum/tags/components/TagDiscussionModal";
 function insertTemplate() {
   if (!app.composer.fields.tags) return;
   const original = app.composer.body.attrs.originalContent || "";
-  if (
-    app.composer.fields.content() !== original &&
-    !app.forum.attribute("appendTemplateOnTagChange")
-  )
+  const content = app.composer.fields.content().trim();
+  if (content !== original && !app.forum.attribute("appendTemplateOnTagChange"))
     return;
 
   const templateCandidates = {};
@@ -35,15 +33,14 @@ function insertTemplate() {
   }
 
   if (Object.keys(templateCandidates).length === 1) {
-    const template = Object.values(templateCandidates)[0];
+    let template = Object.values(templateCandidates)[0];
 
-    if (app.composer.fields.content() === original) {
-      app.composer.editor.setValue(template);
+    if (content === original) {
       app.composer.body.attrs.originalContent = template;
     } else {
-      const combined = app.composer.fields.content() + "\n\n" + template;
-      app.composer.editor.setValue(combined);
+      template = "\n\n" + template;
     }
+    app.composer.editor.insertAtCursor(template);
   }
 }
 
