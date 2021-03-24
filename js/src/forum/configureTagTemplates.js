@@ -51,6 +51,13 @@ export default function configureTagTemplates() {
     promise.then((composer) => {
       if (composer.fields.tags.length > 0) {
         insertTemplate();
+      } else {
+        const noTagTemplate = app.forum.attribute(
+          "askvortsov-discussion-templates.no_tag_template"
+        );
+        if (noTagTemplate) {
+          composer.editor.insertAtCursor(noTagTemplate);
+        }
       }
     });
   });

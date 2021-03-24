@@ -48,6 +48,24 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
       ),
       type: "boolean",
     })
+    .registerSetting(function () {
+      return (
+        <div className="Form-group">
+          <label>
+            {app.translator.trans(
+              "askvortsov-discussion-templates.admin.settings.no_tag_template"
+            )}
+          </label>
+          <textarea
+            className="FormControl"
+            rows="10"
+            bidi={this.setting(
+              "askvortsov-discussion-templates.no_tag_template"
+            )}
+          ></textarea>
+        </div>
+      );
+    })
     .registerPermission(
       {
         icon: "fas fa-reply",

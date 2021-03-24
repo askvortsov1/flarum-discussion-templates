@@ -51,7 +51,8 @@ return [
 
     (new Extend\Event())
         ->listen(Saving::class, SaveReplyTemplateToDatabase::class),
-
+    
     (new Extend\Settings())
+        ->serializeToForum('askvortsov-discussion-templates.no_tag_template', 'askvortsov-discussion-templates.no_tag_template')
         ->serializeToForum('appendTemplateOnTagChange', 'appendTemplateOnTagChange', 'boolval'),
 ];
