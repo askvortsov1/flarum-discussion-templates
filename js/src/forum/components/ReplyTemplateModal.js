@@ -55,7 +55,7 @@ export default class ReplyTemplateModal extends Modal {
 
     const replyTemplate = this.replyTemplate();
 
-    if (replyTemplate && replyTemplate !== this.discussion.replyTemplate()) {
+    if (replyTemplate !== this.discussion.replyTemplate()) {
       return this.discussion
         .save({ replyTemplate })
         .then(() => {
