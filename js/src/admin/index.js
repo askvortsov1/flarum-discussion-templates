@@ -46,6 +46,9 @@ app.initializers.add("askvortsov/flarum-discussion-templates", () => {
       label: app.translator.trans(
         "askvortsov-discussion-templates.admin.settings.append_template_on_tag_change"
       ),
+      help: app.translator.trans(
+        "askvortsov-discussion-templates.admin.settings.append_template_on_tag_change_help"
+      ),
       type: "boolean",
     })
     .registerSetting(function () {
