@@ -59,7 +59,7 @@ export default function configureTagTemplates() {
           composer.editor.insertAtCursor(noTagTemplate);
         }
       }
-    });
+    }).catch(() => {});
   });
 
   extend(TagDiscussionModal.prototype, "onremove", function () {
