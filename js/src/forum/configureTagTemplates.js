@@ -4,6 +4,8 @@ import Model from "flarum/Model";
 import Tag from "flarum/tags/models/Tag";
 import TagDiscussionModal from "flarum/tags/components/TagDiscussionModal";
 
+console.log("test");
+
 function insertTemplate() {
   if (!app.composer.fields.tags) return;
   const original = app.composer.body.attrs.originalContent || "";
@@ -40,7 +42,7 @@ function insertTemplate() {
     } else {
       template = "\n\n" + template;
     }
-    app.composer.editor.insertAtCursor(template);
+    app.composer.editor.insertAtCursor(template, false);
   }
 }
 
@@ -48,18 +50,20 @@ export default function configureTagTemplates() {
   Tag.prototype.template = Model.attribute("template");
 
   extend(IndexPage.prototype, "newDiscussionAction", function (promise) {
-    promise.then((composer) => {
-      if (composer.fields.tags.length > 0) {
-        insertTemplate();
-      } else {
-        const noTagTemplate = app.forum.attribute(
-          "askvortsov-discussion-templates.no_tag_template"
-        );
-        if (noTagTemplate) {
-          composer.editor.insertAtCursor(noTagTemplate);
+    promise
+      .then((composer) => {
+        if (composer.fields.tags.length > 0) {
+          insertTemplate();
+        } else {
+          const noTagTemplate = app.forum.attribute(
+            "askvortsov-discussion-templates.no_tag_template"
+          );
+          if (noTagTemplate) {
+            composer.editor.insertAtCursor(noTagTemplate, false);
+          }
         }
-      }
-    }).catch(() => {});
+      })
+      .catch(() => {});
   });
 
   extend(TagDiscussionModal.prototype, "onremove", function () {
