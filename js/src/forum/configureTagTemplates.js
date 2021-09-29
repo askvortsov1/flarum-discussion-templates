@@ -4,8 +4,6 @@ import Model from "flarum/Model";
 import Tag from "flarum/tags/models/Tag";
 import TagDiscussionModal from "flarum/tags/components/TagDiscussionModal";
 
-console.log("test");
-
 function insertTemplate() {
   if (!app.composer.fields.tags) return;
   const original = app.composer.body.attrs.originalContent || "";
