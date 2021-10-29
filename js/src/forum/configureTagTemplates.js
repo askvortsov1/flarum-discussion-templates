@@ -37,6 +37,8 @@ function insertTemplate(contentOverwrite = false) {
   if (Object.keys(templateCandidates).length === 1) {
     let template = Object.values(templateCandidates)[0];
 
+    if (content === template) return;
+
     if (content === original) {
       app.composer.body.attrs.originalContent = template;
     } else {
