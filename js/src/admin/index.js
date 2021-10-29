@@ -1,6 +1,6 @@
-import { extend } from "flarum/extend";
-import Model from "flarum/Model";
-import Button from "flarum/components/Button";
+import { extend } from "flarum/common/extend";
+import Model from "flarum/common/Model";
+import Button from "flarum/common/components/Button";
 import Tag from "flarum/tags/models/Tag";
 import EditTagModal from "flarum/tags/components/EditTagModal";
 import TagTemplateModal from "./components/TagTemplateModal";

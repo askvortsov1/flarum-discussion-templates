@@ -79,7 +79,7 @@ export default function configureTagTemplates() {
 
   override(ComposerState.prototype, "show", function (originalFunction) {
     if (
-      this.body.componentClass instanceof DiscussionComposer &&
+      this.body.componentClass === DiscussionComposer &&
       this.fields.content().trim() === ""
     ) {
       // Only insert template if the composer is empty
